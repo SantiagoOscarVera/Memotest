@@ -20,8 +20,9 @@ const shuffleArray = a => { /// devuelve el array pero en posiciones aleatorias
   }
   return a
 }
-  return <Board memoBlocks={shuffleMemoBlocks} />
-
+  return (
+    <Board memoBlocks={shuffleMemoBlocks} /> // es el listado de bloques mezclados
+  )
 }
 
 export default App
