@@ -1,11 +1,11 @@
-import Memoblock from "./Memoblock/Memoblock"
+import MemoBlock from "../MemoBlock/MemoBlock.jsx"
 import React from 'react';
 
 const Board = ({memoBlocks}) => {
     return (
         <main className="board">
             {memoBlocks.map((memoBlock, i ) => {
-                return <Memoblock key={`${i}_${memoBlock.emoji}`} memoBlock={memoBlock} /> // psamos la key porque lo necesita react para renderizar elementos integrados, el index del map con el emoji nos da un identificador unico para cada bloque y le pasamos el memoblock con toda la informacion del bloque 
+                return <MemoBlock key={`${i}_${memoBlock.emoji}`} memoBlock={memoBlock} /> // psamos la key porque lo necesita react para renderizar elementos integrados, el index del map con el emoji nos da un identificador unico para cada bloque y le pasamos el memoblock con toda la informacion del bloque 
             })}
         </main>
     )

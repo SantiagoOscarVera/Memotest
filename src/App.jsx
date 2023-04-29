@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
 import {useEffect, useState} from "react"
-import Board from "./components/Board/Board"
+import Board from "./components/Board/Board.jsx"
 
 const emojiList = [..."🍕💣🥬🎩🌮🎱🌶🗡"]
 
-App = () => {
+const App = () => {
 const [shuffleMemoBlocks, setShuffleMemoBlocks] = useState([])
 
 useEffect(() => {
