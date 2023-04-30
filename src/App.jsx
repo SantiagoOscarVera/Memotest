@@ -37,16 +37,16 @@ const shuffleArray = a => { /// devuelve el array pero en posiciones aleatorias
     } else { // el usuario no acerto
       setAnimating(true)
       setTimeout(() => {
-        shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
+        shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock); // reemplazamos los bloques por los mismos bloques dados vuelta
         shuffledMemoBlocksCopy.splice(selectedMemoBlock.index, 1, selectedMemoBlock);
         setShuffledMemoBlocks(shuffledMemoBlocksCopy)
         setSelectedMemoBlock(null)
-        setAnimating(false)
+        setAnimating(false) // en false porque ya termino la animacion
       }, 1000)
     }
   }
   return (
-    <Board memoBlocks={shuffledMemoBlocks} /> // es el listado de bloques mezclados
+    <Board memoBlocks={shuffledMemoBlocks} animating={animating} handleMemoClick={handleMemoClick} /> // es el listado de bloques mezclados
   )
 }
 
