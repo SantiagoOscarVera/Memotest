@@ -3,7 +3,7 @@ import './App.css'
 import {useEffect, useState} from "react"
 import Board from "./components/Board/Board.jsx"
 
-const emojiList = [..."🍕💣🥬🎩🌮🎱🌶🗡"]
+const emojiList = [..."🍕💣🥬🎩🌮🎱🌶🗡😜😪"]
 
 const App = () => {
 const [shuffledMemoBlocks, setShuffledMemoBlocks] = useState([])
@@ -14,7 +14,7 @@ const [animating, setAnimating] = useState(false) // para saber si todavia estam
 
 useEffect(() => {
 const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]) // guardamos el array mezclado y se lo pasamos dos veces para que los emojis esten dos veces para que puedan encontrar las parejas
-setShuffleMemoBlocks(shuffledEmojiList.map( (emoji, i ) => ({index:i, emoji, flipped:false}) )) // flipped indica que la carta empueza dada vuelta 
+setShuffledMemoBlocks(shuffledEmojiList.map( (emoji, i ) => ({index:i, emoji, flipped:false}) )) // flipped indica que la carta empueza dada vuelta 
 }, []) // el array de dependencias lo dejamos vacio para que se entienda que se ejecute una sola vez que el componente se renderice
 
 const shuffleArray = a => { /// devuelve el array pero en posiciones aleatorias 
