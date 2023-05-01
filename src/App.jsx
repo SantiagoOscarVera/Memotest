@@ -10,7 +10,8 @@ const App = () => {
   const [selectedMemoBlock, setSelectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
-  const [timerStarted, setTimerStarted] = useState(false); // nuevo estado booleano
+  const [timerStarted, setTimerStarted] = useState(false);
+  const [allBlocksFlipped, setAllBlocksFlipped] = useState(false); // nuevo estado booleano
 
   const resetGame = () => {
     setTimeLeft(60);
@@ -20,8 +21,13 @@ const App = () => {
     );
     setSelectedMemoBlock(null);
     setAnimating(false);
-    setTimerStarted(false); // reiniciar el estado booleano
+    setTimerStarted(false);
+    setAllBlocksFlipped(false); // reiniciar el estado booleano
   };
+
+  useEffect(() => { // apenas se recarga el componente, se usa la funcion resetear que hace que me cargue el board, se reinicie el temporizador y se vuelvan a mezclar los bloques
+    resetGame();
+  }, []);
 
   const startTimer = () => {
     const timer = setInterval(() => {
@@ -42,7 +48,10 @@ const App = () => {
 
     // Verificar si todos los bloques están volteados
     const allBlocksFlipped = shuffledMemoBlocks.every((block) => block.flipped);
-    if (allBlocksFlipped) {
+    setAllBlocksFlipped(allBlocksFlipped); // establecer el estado booleano
+
+    // Mostrar mensaje "Ganaste" si todos los bloques están volteados y si el temporizador llegó a los 50 segundos
+    if (allBlocksFlipped && timeLeft <= 50) {
       clearInterval(timer);
       alert("Ganaste");
     }
@@ -94,10 +103,12 @@ const App = () => {
 
   return (
     <div>
+      
   <button onClick={resetGame}>Reiniciar</button>
+  
   {timerStarted ? (
     <div>
-      <button disabled>Empezar el conteo</button>
+      {/* <button disabled>Empezar el conteo</button> */}
       <div>Tiempo restante: {timeLeft} segundos</div>
     </div>
   ) : (
