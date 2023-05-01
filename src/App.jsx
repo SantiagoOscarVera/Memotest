@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import styles from './App.css'
 import {useEffect, useState} from "react"
 import Board from "./components/Board/Board.jsx"
 
@@ -104,16 +104,18 @@ const App = () => {
   return (
     <div>
       
-  <button onClick={resetGame}>Reiniciar</button>
+      <div className="button-container">
+  <button className={styles.botones} onClick={resetGame}>Reiniciar</button>
   
   {timerStarted ? (
     <div>
-      {/* <button disabled>Empezar el conteo</button> */}
       <div>Tiempo restante: {timeLeft} segundos</div>
     </div>
   ) : (
-    <button onClick={handleStartTimerClick}>Empezar el conteo</button>
+    <button className={styles.botones} onClick={handleStartTimerClick}>Empezar el conteo</button>
   )}
+</div>
+
   <Board memoBlocks={shuffledMemoBlocks} animating={animating} handleMemoClick={handleMemoClick} /> {/* // es el listado de bloques mezclados */}
 </div>
   )
