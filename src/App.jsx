@@ -32,15 +32,23 @@ const App = () => {
 
   useEffect(() => {
     let timer;
-    if (timerStarted) { // agregar condición para que el temporizador solo comience si timerStarted es true
+    if (timerStarted) {
       timer = startTimer();
     }
     if (timeLeft === 0) {
       clearInterval(timer);
       alert("Game Over");
     }
+
+    // Verificar si todos los bloques están volteados
+    const allBlocksFlipped = shuffledMemoBlocks.every((block) => block.flipped);
+    if (allBlocksFlipped) {
+      clearInterval(timer);
+      alert("Ganaste");
+    }
+
     return () => clearInterval(timer);
-  }, [timeLeft, timerStarted]);
+  }, [timeLeft, timerStarted, shuffledMemoBlocks]);
 
   const shuffleArray = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
@@ -55,6 +63,11 @@ const App = () => {
   };
 
   const handleMemoClick = (memoBlock) => {
+
+    if (!timerStarted) { // agregar condición para verificar si el temporizador ha comenzado
+      return;
+    }
+
     if (timeLeft === 0) {
       return;
     }
@@ -76,7 +89,7 @@ const App = () => {
         setSelectedMemoBlock(null);
         setAnimating(false);
       }, 1000);
-    }
+    } 
   };
 
   return (
