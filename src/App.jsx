@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './App.css'
 import {useEffect, useState} from "react"
 import Board from "./components/Board/Board.jsx"
+import Swal from 'sweetalert2'
 
 const emojiList = [..."🍕💣🥬🎩🌮🎱🌶🗡😜😪"]
 
@@ -14,7 +15,7 @@ const App = () => {
   const [allBlocksFlipped, setAllBlocksFlipped] = useState(false); // nuevo estado booleano
 
   const resetGame = () => {
-    setTimeLeft(60);
+    setTimeLeft(10);
     const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]);
     setShuffledMemoBlocks(
       shuffledEmojiList.map((emoji, i) => ({ index: i, emoji, flipped: false }))
@@ -43,7 +44,14 @@ const App = () => {
     }
     if (timeLeft === 0) {
       clearInterval(timer);
-      alert("Game Over");
+      Swal.fire({
+        title: '¡Perdiste 😥!',
+        text: 'Culpa tuya el perrito está en apuros, vuelve a intentarlo 🚑',
+        imageUrl: 'https://i.pinimg.com/originals/cd/6f/f5/cd6ff5b067afaeba0e4d5535f1bc0a87.jpg',
+        imageWidth: 400,
+        imageHeight: 350,
+        imageAlt: 'Custom image',
+      })
     }
 
     // Verificar si todos los bloques están volteados
