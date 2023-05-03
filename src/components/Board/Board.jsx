@@ -1,4 +1,4 @@
-import MemoBlock from "../MemoBlock/MemoBlock.jsx"
+import MemoBlock from "../MemoBlock/MemoBlock"
 import styles from "./Board.module.css"
 import React from 'react';
 
