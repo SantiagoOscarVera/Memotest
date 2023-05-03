@@ -15,7 +15,7 @@ const App = () => {
   const [allBlocksFlipped, setAllBlocksFlipped] = useState(false); // nuevo estado booleano
 
   const resetGame = () => {
-    setTimeLeft(10);
+    setTimeLeft(60);
     const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]);
     setShuffledMemoBlocks(
       shuffledEmojiList.map((emoji, i) => ({ index: i, emoji, flipped: false }))
@@ -61,7 +61,14 @@ const App = () => {
     // Mostrar mensaje "Ganaste" si todos los bloques están volteados y si el temporizador llegó a los 50 segundos
     if (allBlocksFlipped && timeLeft <= 50) {
       clearInterval(timer);
-      alert("Ganaste");
+      Swal.fire({
+        title: '¿Por qué tan elegante Homero? <br> - Porque este usuario ganó muchacho!',
+        text: '¡Felicidades, ganaste, esa memoria todavia esta aceitada!',
+        imageUrl: 'https://scontent.fcor10-3.fna.fbcdn.net/v/t1.6435-9/97563815_3116729948386940_6774695505050992640_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeF9XgY050R9ZjQJcXjD2ox_0s9fHrxZmdjSz18evFmZ2DC8fK862-k4aWBUMF0ABJ4WO65MjfXHWcFIzvJ-6FVF&_nc_ohc=0NI0jMx5ylwAX8pFuyj&_nc_ht=scontent.fcor10-3.fna&oh=00_AfDV6Zyb1uWNJCVOGf2mQHjg22_6XDWGJpgu9VmCN9e8Vw&oe=64794191',
+        imageWidth: 1100,
+        imageHeight: 300,
+        imageAlt: 'Custom image',
+      })
     }
 
     return () => clearInterval(timer);
