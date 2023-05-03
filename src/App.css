@@ -2,5 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10%;
+    margin-bottom: -7%;
   }
-  
+
+  .button-reiniciar{
+    margin-left: 5%;
+    margin-right: 10%;
+    border-color: white;
+  }
+
+  .tiempo{
+    color:black;
+  }

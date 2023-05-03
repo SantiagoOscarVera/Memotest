@@ -3,6 +3,7 @@ import styles from './App.css'
 import {useEffect, useState} from "react"
 import Board from "./components/Board/Board.jsx"
 import Swal from 'sweetalert2'
+import { Button } from '@chakra-ui/react'
 
 const emojiList = [..."🍕💣🥬🎩🌮🎱🌶🗡😜😪"]
 
@@ -120,14 +121,15 @@ const App = () => {
     <div>
       
       <div className="button-container">
-  <button className={styles.botones} onClick={resetGame}>Reiniciar</button>
+      
+  <Button className="button-reiniciar" variant='outline' colorScheme='cyan' onClick={resetGame}>Volver a intentar</Button>
   
   {timerStarted ? (
     <div>
-      <div>Tiempo restante: {timeLeft} segundos</div>
+      <div className='tiempo'>Tiempo restante: {timeLeft} segundos</div>
     </div>
   ) : (
-    <button className={styles.botones} onClick={handleStartTimerClick}>Empezar el conteo</button>
+    <Button className="button-empezar" variant='outline' colorScheme='whatsapp' onClick={handleStartTimerClick}>Empezar a jugar</Button>
   )}
 </div>
 
