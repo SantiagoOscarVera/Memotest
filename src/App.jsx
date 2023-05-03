@@ -16,7 +16,7 @@ const App = () => {
   const [allBlocksFlipped, setAllBlocksFlipped] = useState(false); // nuevo estado booleano
 
   const resetGame = () => {
-    setTimeLeft(40);
+    setTimeLeft(35);
     const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]);
     setShuffledMemoBlocks(
       shuffledEmojiList.map((emoji, i) => ({ index: i, emoji, flipped: false }))
